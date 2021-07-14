@@ -1,16 +1,16 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
+# 0f56286be30b49f385e348b38d2c9fe3
+import requests
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
+class NewsFeed:
+
+    def __init__(self, data):
+        self.data = data
+
+    def get(self):
+        pass
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+response = requests.get('https://newsapi.org/v2/top-headlines?country=us&apiKey=0f56286be30b49f385e348b38d2c9fe3')
+content = response.text
+print(content)
