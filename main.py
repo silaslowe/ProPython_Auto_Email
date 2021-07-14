@@ -1,5 +1,6 @@
 # 0f56286be30b49f385e348b38d2c9fe3
 import requests
+from pprint import pprint
 
 
 class NewsFeed:
@@ -11,6 +12,13 @@ class NewsFeed:
         pass
 
 
-response = requests.get('https://newsapi.org/v2/top-headlines?country=us&apiKey=0f56286be30b49f385e348b38d2c9fe3')
+url = 'https://newsapi.org/v2/everything?' \
+      'q=thailand&' \
+      'from=2021-07-12&' \
+      'to=2021-07-14' \
+      '&Language=en&' \
+      'apiKey=0f56286be30b49f385e348b38d2c9fe3'
+
+response = requests.get(url)
 content = response.text
-print(content)
+pprint(content)
