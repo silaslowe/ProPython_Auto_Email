@@ -16,16 +16,9 @@ class NewsFeed:
         self.language = language
 
     def get(self):
-        url = f'{self.base_url}' \
-              f'q={self.interest}&' \
-              f'from={self.from_date}' \
-              f'to={self.to_date}' \
-              f'&Language={self.language}&' \
-              f'apiKey={self.api_key}'
+        url = self._build_url()
 
-        response = requests.get(url)
-        content = response.json()
-        articles = content['articles']
+        articles = self.get_articles(url)
 
         email_body = ''
 
@@ -34,7 +27,22 @@ class NewsFeed:
 
         return email_body
 
+    def get_articles(self, url):
+        response = requests.get(url)
+        content = response.json()
+        articles = content['articles']
+        return articles
+
+    def _build_url(self):
+        url = f'{self.base_url}' \
+              f'q={self.interest}&' \
+              f'from={self.from_date}' \
+              f'to={self.to_date}' \
+              f'&Language={self.language}&' \
+              f'apiKey={self.api_key}'
+        return url
+
+
 if __name__ == "__main__":
     newsfeed = NewsFeed('nasa', '2021-07-13', '2021-07-14', 'en')
     print(newsfeed.data)
-
