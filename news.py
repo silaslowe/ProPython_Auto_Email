@@ -34,6 +34,7 @@ class NewsFeed:
 
         return email_body
 
-
-# newsfeed = NewsFeed('nasa', '2021-07-13', '2021-07-14', 'en')
+if __name__ == "__main__":
+    newsfeed = NewsFeed('nasa', '2021-07-13', '2021-07-14', 'en')
+    print(newsfeed.data)
 
